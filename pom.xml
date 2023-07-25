@@ -98,13 +98,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>farook Releases Nexus Repository</name>
-	      <url>http://3.6.38.121:8081/repository/myfirst-release/</url>
+	      <url>http://13.126.168.245:8081/repository/myfirst-release/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>farook Snapshot Nexus Repository </name>
-	      <url>http://3.6.38.121:8081/repository/firstapp-snapshots/</url>
+	      <url>http://13.126.168.245:8081/repository/firstapp-snapshots/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
