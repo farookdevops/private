@@ -1,4 +1,6 @@
 node{
+
+properties([[$class: 'JobLocalConfiguration', changeReasonComment: ''], pipelineTriggers([githubPush()])])
 def mavenHome = tool name: 'maven3.9.3'
 echo "The job name is: ${env.JOB_NAME}"
 echo "The build number is: ${env.BUILD_NUMBER}"
