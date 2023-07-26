@@ -1,5 +1,7 @@
 node{
 def mavenHome = tool name: 'maven3.9.3'
+echo "The job name is: ${env.JOB_NAME}"
+echo "The build number is: ${env.BUILD_NUMBER}"
 //checkout code from SCM
 stage('Checkout-code'){
     git branch: 'main', credentialsId: '6a169fe1-9e37-40a4-9d0c-20cebb2ad057', url: 'https://github.com/farookdevops/private.git' 
