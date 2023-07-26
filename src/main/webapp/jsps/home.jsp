@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>MithunTechnologies- Home Page</title>
+<title>Farook Practising- Home Page</title>
 <link href="images/mithunlogo.jpg" rel="icon">
 </head>
 </head>
 <body>
-<h1 align="center">Welcome to Farook family trying to deploy on Tomcat server through scripted pipeline</h1>
+<h1 align="center">Welcome to Farook family trying to deploy on Tomcat server through scripted pipeline by using webhook</h1>
 <h1 align="center"> Wife Ameena, Daughter faizah, father rasool shaheb, mother mahabunni,brother hussain</h1>
 <hr>
 <br>
