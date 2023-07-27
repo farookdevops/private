@@ -6,6 +6,7 @@ pipeline{
 }
 
 triggers {
+  pollSCM ignorePostCommitHooks: true, scmpoll_spec: '* * * * *'
 }
 
 
