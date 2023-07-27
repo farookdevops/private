@@ -1,27 +1,33 @@
-node{
-
+pieline{
+agent any 
+properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')), [$class: 'JobLocalConfiguration', changeReasonComment: '']])
 properties([[$class: 'JobLocalConfiguration', changeReasonComment: ''], pipelineTriggers([githubPush()])])
-def mavenHome = tool name: 'maven3.9.3'
-echo "The job name is: ${env.JOB_NAME}"
-echo "The build number is: ${env.BUILD_NUMBER}"
-//checkout code from SCM
-stage('Checkout-code'){
-    git branch: 'main', credentialsId: '6a169fe1-9e37-40a4-9d0c-20cebb2ad057', url: 'https://github.com/farookdevops/private.git' 
+tools {
+maven "maven3.9.3"
 }
-//Build the war application using Maven
-stage('Build the code with maven'){
- sh "$mavenHome/bin/mvn clean package"
-        
+stages{
+  stage('CheckoutCode'){
+  steps{
+    git branch: 'development', credentialsId: '6a169fe1-9e37-40a4-9d0c-20cebb2ad057', url: 'https://github.com/farookdevops/private.git'
+       }
     }
-//Deploy to Nexus    
-stage('deploy artifacts on Nexus'){
- sh "$mavenHome/bin/mvn deploy"
-}
-//Deploy to tomcat
-stage('Deploy-app-to-tomcat'){
-  sshagent(['6c196018-4f45-4ac7-857c-27e36526b79f']) {
-  sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war  ec2-user@13.233.179.197:/opt/apache-tomcat-9.0.78/webapps"
+  stage('Build'){
+  steps{
+    sh "mvn clean package"
+       }
+   }
+  stage('DeployToNexus'){
+  steps{
+    sh "mvn deploy"
+      }
+    }
+  stage('DeployToTomcat'){
+  steps{
+    sshagent(['6c196018-4f45-4ac7-857c-27e36526b79f']) {
+    sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war  ec2-user@13.234.202.101:/opt/apache-tomcat-9.0.78/webapps"
+                                                       }
+                         }
+                   }
 }
 }
 
-}
